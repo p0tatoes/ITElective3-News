@@ -5,7 +5,7 @@ import '@/app/globals.css'
 import { Post } from '@/components/Post'
 
 // List of all news posts
-export default function Posts() {
+export default function AllNews() {
     const [posts, setPosts] = useState([])
 
     async function getAllNews() {

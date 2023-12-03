@@ -9,6 +9,5 @@ const prisma = new PrismaClient()
 export async function GET(request, { params }) {
     const newsId = parseInt(params.id)
     const data = await prisma.news.findFirst({ where: { id: newsId } })
-    console.log(data)
     return new Response(JSON.stringify(data))
 }
