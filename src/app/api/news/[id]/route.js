@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import { useParams } from 'next/navigation'
 const prisma = new PrismaClient()
 
 /**
