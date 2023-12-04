@@ -4,9 +4,26 @@ import prisma from '@/lib/prisma'
  * /api/news/update/[id]
  */
 
-// TODO: make API to update data in the database
 // Updates a specified news post from the database
-export async function GET(request, { params }) {
-    const data = await prisma.news.findMany()
-    return new Response(JSON.stringify(data))
+export async function PATCH(request, { params }) {
+    const newsId = parseInt(params.id)
+
+    const updateData = await request.formData()
+    const updatedTitle = updateData.get('title')
+    const updatedBody = updateData.get('body')
+
+    if (updatedTitle) {
+        await prisma.news.update({
+            where: { id: newsId },
+            data: { title: updatedTitle },
+        })
+    }
+    if (updatedBody) {
+        await prisma.news.update({
+            where: { id: newsId },
+            data: { body: updatedBody },
+        })
+    }
+
+    return Response.json({ message: `updated news #${newsId}` })
 }
