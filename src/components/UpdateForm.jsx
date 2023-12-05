@@ -28,24 +28,33 @@ export const UpdateForm = ({ id }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    name='title'
-                    id='title'
-                    placeholder='Title'
-                    onChange={handleChange}
-                />
-                <input
-                    type='text'
-                    name='body'
-                    id='body'
-                    placeholder='Body'
-                    onChange={handleChange}
-                />
-                <button type='submit'>Update Post</button>
-            </form>
-        </div>
+        <form
+            onSubmit={handleSubmit}
+            className='flex flex-col gap-5 w-fit'
+        >
+            <input
+                type='text'
+                name='title'
+                id='title'
+                placeholder='Title'
+                onChange={handleChange}
+                className='bg-zinc-400 px-7 py-2 rounded-2xl shadow-lg placeholder:text-zinc-500'
+            />
+            <textarea
+                name='body'
+                id='body'
+                cols='30'
+                rows='10'
+                onChange={handleChange}
+                placeholder='Body'
+                className='bg-zinc-400 px-7 py-2 rounded-2xl shadow-lg placeholder:text-zinc-500'
+            ></textarea>
+            <button
+                type='submit'
+                className='bg-zinc-400 px-7 py-2 rounded-2xl shadow-lg'
+            >
+                Update Post
+            </button>
+        </form>
     )
 }
