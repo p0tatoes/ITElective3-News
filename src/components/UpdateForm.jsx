@@ -12,7 +12,7 @@ export const UpdateForm = ({ id }) => {
             body: JSON.stringify(updateData),
         })
 
-        location.href = '/news/2'
+        location.href = `/news/${id}`
     }
 
     const handleChange = (e) => {
