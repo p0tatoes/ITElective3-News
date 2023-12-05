@@ -1,4 +1,5 @@
 import prisma from '@/lib/prisma'
+import { redirect } from 'next/navigation'
 
 /**
  * /api/news/update/[id]
@@ -8,9 +9,9 @@ import prisma from '@/lib/prisma'
 export async function PATCH(request, { params }) {
     const newsId = parseInt(params.id)
 
-    const updateData = await request.formData()
-    const updatedTitle = updateData.get('title')
-    const updatedBody = updateData.get('body')
+    const updateData = await request.json()
+    const updatedTitle = await updateData.title
+    const updatedBody = await updateData.body
 
     if (updatedTitle) {
         await prisma.news.update({
