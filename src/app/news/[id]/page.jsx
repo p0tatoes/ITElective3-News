@@ -51,7 +51,7 @@ export default function SingleNews({ params }) {
             <h2 className='text-xl font-semibold'>by: {news.author}</h2>
             <h2 className='italic'>{news.createdAt}</h2>
             <p className='text-lg text-justify'>{news.body}</p>
-            <div className='flex gap-6 fixed bottom-16 right-16'>
+            <div className='flex gap-6 fixed bottom-10 right-10'>
                 <button
                     onClick={handleDelete}
                     className='px-10 py-2 bg-red-600 text-white font-bold rounded-2xl'
