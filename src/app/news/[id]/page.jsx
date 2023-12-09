@@ -26,7 +26,6 @@ export default function SingleNews({ params }) {
             body: data.body,
             createdAt: data.upload_date,
         })
-        console.log(news)
     }
 
     const handleDelete = async () => {
