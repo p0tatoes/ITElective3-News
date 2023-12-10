@@ -1,10 +1,12 @@
-"use client"
+'use client'
 import '@/app/globals.css'
-import Form from '@/components/Form'
+import CreateForm from '@/components/CreateForm'
 
-// TODO: make a "create new post" form
 // Create new news post form
 export default function CreateNews() {
-    return <div>New Post Form <Form /></div>
-
+    return (
+        <div>
+            New Post Form <CreateForm />
+        </div>
+    )
 }

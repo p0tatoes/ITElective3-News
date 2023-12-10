@@ -1,24 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-export const UpdateForm = ({ id }) => {
-    const [oldData, setOldData] = useState({
-        title: '',
-        body: '',
-    })
-
+export const UpdateForm = ({ id, title, body }) => {
     const [updateData, setUpdateData] = useState({
         title: '',
         body: '',
     })
-
-    const getOldData = async () => {
-        const response = await fetch(`/api/news/${id}`)
-        const data = await response.json()
-        setOldData({
-            title: data.title,
-            body: data.body,
-        })
-    }
 
     const updateNews = async () => {
         const response = await fetch(`/api/news/update/${id}`, {
@@ -41,10 +27,6 @@ export const UpdateForm = ({ id }) => {
         updateNews()
     }
 
-    useEffect(() => {
-        getOldData()
-    })
-
     return (
         <form
             onSubmit={handleSubmit}
@@ -56,7 +38,7 @@ export const UpdateForm = ({ id }) => {
                 id='title'
                 placeholder='Title'
                 onChange={handleChange}
-                defaultValue={oldData.title}
+                defaultValue={title}
                 className='bg-zinc-400 px-7 py-2 rounded-2xl shadow-lg placeholder:text-zinc-500'
             />
             <textarea
@@ -66,7 +48,7 @@ export const UpdateForm = ({ id }) => {
                 rows='10'
                 onChange={handleChange}
                 placeholder='Body'
-                defaultValue={oldData.body}
+                defaultValue={body}
                 className='bg-zinc-400 px-7 py-2 rounded-2xl shadow-lg placeholder:text-zinc-500'
             ></textarea>
             <button

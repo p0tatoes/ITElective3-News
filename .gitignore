@@ -8,6 +8,7 @@
 
 # testing
 /coverage
+/__test__/jsconfig.json
 
 # next.js
 /.next/

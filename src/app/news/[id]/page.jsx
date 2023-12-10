@@ -3,7 +3,6 @@
 import '@/app/globals.css'
 import { useEffect, useState } from 'react'
 
-// TODO: add update and delete buttons
 // View single news post
 export default function SingleNews({ params }) {
     const newsId = params.id
