@@ -22,7 +22,7 @@ const CreateForm = ({ id }) => {
     }
 
     return (
-        <div className='ml-6'>
+        <div className='ml-6 mt-6'>
             <form onSubmit={handleSubmit}>
                 <label>
                     Title:
