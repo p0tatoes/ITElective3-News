@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CreateForm = ({ id }) => {
+const CreateForm = () => {
     const [postData, setPostData] = useState({
         title: '',
         author: '',
