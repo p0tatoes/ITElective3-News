@@ -1,8 +1,12 @@
 import CreateForm from '@/components/CreateForm'
 import '@testing-library/jest-dom'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 
 global.fetch = jest.fn()
+
+beforeEach(() => {
+    jest.clearAllMocks()
+})
 
 describe('Create News Form', () => {
     describe('title textbox', () => {
@@ -49,15 +53,30 @@ describe('Create News Form', () => {
 
             expect(getByRole('button')).toBeInTheDocument()
         })
-        it('should be clickable', () => {
-            const { getByRole } = render(<CreateForm />)
+        it('should be clickable and submit form data', async () => {
+            const { getByRole, getByPlaceholderText } = render(<CreateForm />)
 
+            fireEvent.change(getByPlaceholderText('title'), {
+                target: { value: 'placeholder title' },
+            })
+            fireEvent.change(getByPlaceholderText('author'), {
+                target: { value: 'placeholder author' },
+            })
+            fireEvent.change(getByPlaceholderText('body'), {
+                target: { value: 'placeholder body' },
+            })
             fireEvent.click(getByRole('button'))
 
-            expect(global.fetch).toBeCalled()
-
-            global.fetch.mockClear()
-            delete global.fetch
+            await waitFor(() => {
+                expect(global.fetch).toHaveBeenCalledWith('/api/news/create', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        title: 'placeholder title',
+                        author: 'placeholder author',
+                        body: 'placeholder body',
+                    }),
+                })
+            })
         })
     })
 })
