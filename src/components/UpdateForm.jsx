@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const UpdateForm = ({ id }) => {
+export const UpdateForm = ({ id, title, body }) => {
     const [updateData, setUpdateData] = useState({
         title: '',
         body: '',
@@ -38,6 +38,7 @@ export const UpdateForm = ({ id }) => {
                 id='title'
                 placeholder='Title'
                 onChange={handleChange}
+                defaultValue={title}
                 className='bg-zinc-400 px-7 py-2 rounded-2xl shadow-lg placeholder:text-zinc-500'
             />
             <textarea
@@ -47,6 +48,7 @@ export const UpdateForm = ({ id }) => {
                 rows='10'
                 onChange={handleChange}
                 placeholder='Body'
+                defaultValue={body}
                 className='bg-zinc-400 px-7 py-2 rounded-2xl shadow-lg placeholder:text-zinc-500'
             ></textarea>
             <button
